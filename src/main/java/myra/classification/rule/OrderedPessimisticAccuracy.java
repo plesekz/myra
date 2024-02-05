@@ -75,7 +75,8 @@ public class OrderedPessimisticAccuracy implements ListMeasure {
         //TODO scale by rule ordering
         for(int i = 0; i < coverage.length; i++){
             double ruleCoverageAsFraction=(coverage[i]/(double)dataset.size());
-            scale+= ruleCoverageAsFraction*Math.pow(2,i);
+            //ruleCoverageAsFraction=ruleCoverageAsFraction*Math.pow(2,i);
+            scale+= ruleCoverageAsFraction;
         }
 
         return new Maximise(1.0 - ((predicted / (double) dataset.size())*scale));
