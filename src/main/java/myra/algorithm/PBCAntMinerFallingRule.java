@@ -20,33 +20,8 @@
 package myra.algorithm;
 
 import static myra.Config.CONFIG;
-import static myra.IterativeActivity.MAX_ITERATIONS;
-import static myra.IterativeActivity.STAGNATION;
-import static myra.Scheduler.COLONY_SIZE;
-import static myra.datamining.IntervalBuilder.DEFAULT_BUILDER;
-import static myra.datamining.IntervalBuilder.MAXIMUM_LIMIT;
-import static myra.datamining.IntervalBuilder.MINIMUM_CASES;
-import static myra.rule.Assignator.ASSIGNATOR;
-import static myra.rule.Heuristic.DEFAULT_HEURISTIC;
-import static myra.rule.Heuristic.DYNAMIC_HEURISTIC;
 import static myra.rule.ListMeasure.DEFAULT_MEASURE;
-import static myra.rule.ListPruner.DEFAULT_LIST_PRUNER;
-import static myra.rule.Pruner.DEFAULT_PRUNER;
-import static myra.rule.Rule.DEFAULT_RULE;
-import static myra.rule.RuleFunction.DEFAULT_FUNCTION;
-import static myra.rule.pittsburgh.FindRuleListActivity.UNCOVERED;
-import static myra.rule.pittsburgh.LevelPheromonePolicy.EVAPORATION_FACTOR;
-import static myra.rule.pittsburgh.LevelPheromonePolicy.P_BEST;
-
-import myra.classification.attribute.BoundarySplit;
-import myra.classification.attribute.MDLSplit;
-import myra.classification.rule.ClassificationRule;
-import myra.classification.rule.EntropyHeuristic;
-import myra.classification.rule.MajorityAssignator;
 import myra.classification.rule.OrderedPessimisticAccuracy;
-import myra.classification.rule.function.SensitivitySpecificity;
-import myra.rule.BacktrackPruner;
-import myra.rule.ListPruner;
 
 /**
  * This class represents the <code><i>c</i>Ant-Miner<sub>PB</sub> with ordered list</code>
