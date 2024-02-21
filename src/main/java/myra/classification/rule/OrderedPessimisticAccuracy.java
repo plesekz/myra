@@ -72,10 +72,12 @@ public class OrderedPessimisticAccuracy implements ListMeasure {
             predicted += (errors[i] + Stats.errors(coverage[i], errors[i]));
         }
 
+        //System.out.println("CUSTOM MEAURE RUNNING");
+
         for(int i = 0; i < coverage.length; i++){
             double ruleCoverageAsFraction=(coverage[i]/(double)dataset.size());
             //ruleCoverageAsFraction=ruleCoverageAsFraction*Math.pow(2,i);
-            ruleCoverageAsFraction=ruleCoverageAsFraction/i;
+            ruleCoverageAsFraction=ruleCoverageAsFraction/Math.pow(2,(i+1));
             scale+= ruleCoverageAsFraction;
         }
         double score = (predicted / (double) dataset.size())*scale;

@@ -40,4 +40,18 @@ public class PBCAntMinerFallingRule extends PittsburghContinuousAntMiner {
 
         CONFIG.set(DEFAULT_MEASURE, new OrderedPessimisticAccuracy());
     }
+    /**
+     * <code><i>c</i>Ant-Miner<sub>PB</sub></code> entry point.
+     * 
+     * @param args
+     *            command-line arguments.
+     * 
+     * @throws Exception
+     *             If an error occurs &mdash; e.g., I/O error.
+     */
+    public static void main(String[] args) throws Exception {
+        PBCAntMinerFallingRule algorithm =
+                new PBCAntMinerFallingRule();
+        algorithm.run(args);
+    }
 }

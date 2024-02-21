@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "PBCAntMinerFallingRule",
+            "request": "launch",
+            "mainClass": "myra.algorithm.PBCAntMinerFallingRule",
+            "projectName": "myra"
+        },
+        {
+            "type": "java",
             "name": "Debug (Launch) - Current File",
             "request": "launch",
             "mainClass": "${file}"
@@ -78,6 +85,14 @@
             "name": "Pittsburgh Mixed-Attribute Ant-Miner",
             "request": "launch",
             "mainClass": "myra.algorithm.PittsburghMixedAttributeAntMiner",
+            "projectName": "myra"
+        },
+        {
+            "type": "java",
+            "name": "PCB AM Falling Rule",
+            "request": "launch",
+            "mainClass": "myra.algorithm.PBCAntMinerFallingRule",
+            "args": "-f \"C:\\Users\\zdend\\OneDrive\\Exeter\\4th year\\Individual project\\myra\\myra\\TR00_iris.arff\"",
             "projectName": "myra"
         },
         {
