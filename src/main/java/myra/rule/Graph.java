@@ -424,6 +424,34 @@ public class Graph {
 
             return array;
         }
+
+        /**
+         * Method that re-arranges the levels within
+         * the Entry according to mapping passed in the arugment.
+         * 
+         * Assume that the current levels are: [0,1,2,3,4]
+         * And the mapping passed is         : [2,4,1,0,3]
+         * Post method run levels are        : [2,4,1,0,3]
+         * 
+         * Assume that the current elvels are: [9,5,7,8,1]
+         * And the mapping passed is         : [2,4,1,0,3]
+         * Post method run levels are        : [7,1,5,9,8]
+         * 
+         * @param mapping and int[] array
+         * Encoding of the re-arranged array as
+         * i-th element in the new level is set
+         * to the mapping[i]th of the old array.
+         */
+        public void reorder(int[] mapping) {
+            //throw new UnsupportedOperationException("Unimplemented method 'reorder'");
+            double[] old = new double[mapping.length];
+            for(int i=0; i<mapping.length;i++){
+                old[i] = value(i);
+            }
+            for(int i=0; i<mapping.length;i++){
+                set(i, old[mapping[i]]);
+            }
+        }
     }
 
     /**
