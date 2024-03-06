@@ -53,6 +53,7 @@ public class LevelPheromonePolicy {
     public final static ConfigKey<Double> EVAPORATION_FACTOR =
             new ConfigKey<Double>();
 
+    public final static ConfigKey<LevelPheromonePolicy> PHEROMONE_POLICY = new ConfigKey<LevelPheromonePolicy>();
     /**
      * The config key for the MAX-MIN p_best value.
      */
