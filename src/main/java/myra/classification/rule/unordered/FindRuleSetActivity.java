@@ -27,6 +27,7 @@ import static myra.rule.ListMeasure.DEFAULT_MEASURE;
 import static myra.rule.Pruner.DEFAULT_PRUNER;
 import static myra.rule.RuleFunction.DEFAULT_FUNCTION;
 import static myra.rule.pittsburgh.FindRuleListActivity.UNCOVERED;
+import static myra.rule.pittsburgh.LevelPheromonePolicy.PHEROMONE_POLICY;
 
 import myra.Archive;
 import myra.Config.ConfigKey;
@@ -174,7 +175,13 @@ public class FindRuleSetActivity extends IterativeActivity<RuleList> {
     public void initialise() {
         super.initialise();
 
-        policy = new LevelPheromonePolicy();
+        if (CONFIG.isPresent(PHEROMONE_POLICY)){
+            policy = CONFIG.get(PHEROMONE_POLICY);
+        } else {
+            policy = new LevelPheromonePolicy();
+        }
+
+
         policy.initialise(graph);
         selector = new FunctionSelector();
 
