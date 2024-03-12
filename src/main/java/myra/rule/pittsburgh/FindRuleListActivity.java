@@ -27,6 +27,7 @@ import static myra.rule.Heuristic.DEFAULT_HEURISTIC;
 import static myra.rule.ListMeasure.DEFAULT_MEASURE;
 import static myra.rule.ListPruner.DEFAULT_LIST_PRUNER;
 import static myra.rule.Pruner.DEFAULT_PRUNER;
+import static myra.rule.pittsburgh.LevelPheromonePolicy.PHEROMONE_POLICY;
 
 import myra.Archive;
 import myra.Config.ConfigKey;
@@ -107,6 +108,9 @@ public class FindRuleListActivity extends IterativeActivity<RuleList> {
                                 Dataset dataset,
                                 LevelRuleFactory factory) {
         this(graph, dataset, factory, new LevelPheromonePolicy());
+        if(CONFIG.isPresent(PHEROMONE_POLICY)){
+            this.policy=CONFIG.get(PHEROMONE_POLICY);
+        }
     }
 
     /**
