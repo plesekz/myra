@@ -97,6 +97,14 @@
         },
         {
             "type": "java",
+            "name": "PBCAM Level Swapping",
+            "request": "launch",
+            "mainClass": "myra.algorithm.PBCAMLevelSwapping",
+            "args": "-f \"C:\\Users\\zdend\\OneDrive\\Exeter\\4th year\\Individual project\\myra\\myra\\TR00_iris.arff\"",
+            "projectName": "myra"
+        },
+        {
+            "type": "java",
             "name": "Shell",
             "request": "launch",
             "mainClass": "myra.rule.shell.Shell",
