@@ -50,6 +50,7 @@ public class OrderedLevelPheromonePolicy extends LevelPheromonePolicy {
     @Override
     public void update(Graph graph, RuleList list) {
         super.update(graph, list);
+        //System.out.println("Re-ordering policy triggered");
 
         // Get coverage of all rules as an array
         Rule[] rules = list.rules();
@@ -66,10 +67,15 @@ public class OrderedLevelPheromonePolicy extends LevelPheromonePolicy {
         }
         // Get indices of the rule in the new ordering, i.e. mapping from the coverage array to a sorted array
         int[] mapping = MapSort.sort(coverage);
+        // System.out.println("New mapping:");
+        //for(int i = 0; i<mapping.length; i++){
+        //    System.out.print(mapping[i]+" ");
+        //}
         // Pass this mapping to all entries, and have them change order of values in them according to the mapping
         Entry[][] matrix = graph.matrix();
-        for(int i = 0; i<matrix.length; i++){
+        for(int i = 0; i<graph.size(); i++){
             for(int j=0;j<matrix[i].length;j++){
+                if(matrix[i][j]!=null)
                 matrix[i][j].reorder(mapping);
             }
         }
