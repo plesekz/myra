@@ -29,17 +29,15 @@ import myra.classification.rule.OrderedPessimisticAccuracy;
  * 
  * @author Zdenek Plesek
  */
-public class PBCAntMinerFallingRule extends PittsburghContinuousAntMiner {
+public class PBCAntMinerFallingRule extends PBCAMEnhancedAnalytics {
     @Override
     protected void defaults() {
         super.defaults();
-
         // configuration not set via command line
-
         // default configuration values
-
         CONFIG.set(DEFAULT_MEASURE, new OrderedPessimisticAccuracy());
     }
+
     /**
      * <code><i>c</i>Ant-Miner<sub>PB</sub></code> entry point.
      * 

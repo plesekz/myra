@@ -29,7 +29,7 @@ import myra.rule.pittsburgh.OrderedLevelPheromonePolicy;
  * 
  * @author Zdenek Plesek
  */
-public class PBCAMLevelSwapping extends PittsburghContinuousAntMiner {
+public class PBCAMLevelSwapping extends PBCAMEnhancedAnalytics {
     @Override
     protected void defaults() {
         // configuration not set via command line
