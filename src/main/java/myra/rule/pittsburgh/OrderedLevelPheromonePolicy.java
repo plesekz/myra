@@ -19,6 +19,8 @@
 
 package myra.rule.pittsburgh;
 
+import java.util.Arrays;
+
 import myra.classification.rule.ClassificationRule;
 import myra.rule.Graph;
 import myra.rule.Rule;
@@ -66,7 +68,12 @@ public class OrderedLevelPheromonePolicy extends LevelPheromonePolicy {
             coverage[i]=coverage[i]/size;
         }
         // Get indices of the rule in the new ordering, i.e. mapping from the coverage array to a sorted array
-        int[] mapping = MapSort.sort(coverage);
+        int[] mapping;
+        if (rules[rules.length-1].isEmpty()) {
+            mapping = MapSort.sort(Arrays.copyOfRange(coverage, 0, rules.length-1));
+        } else {
+            mapping = MapSort.sort(coverage);
+        }
         // System.out.println("New mapping:");
         //for(int i = 0; i<mapping.length; i++){
         //    System.out.print(mapping[i]+" ");

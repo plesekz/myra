@@ -33,18 +33,33 @@ public class PBCAMEnhancedAnalytics extends PittsburghContinuousAntMiner {
         super.logRules(dataset, list);
         Logger.log(">>> Coverage over dataset per rule%n");
 
-        float totalSum = 0;
+        float scalingTerm = 0;
+        float meanRule = 0;
+        float[] totalCov = new float[list.rules().length];
         for (int j = 0; j < list.rules().length; j++) {
             ClassificationRule r = (ClassificationRule) list.rules()[j];
-            float sum = 0;
             for(int i = 0; i<r.covered().length;i++){
-                sum+=r.covered()[i];
+                totalCov[j]+=r.covered()[i];
             }
-            totalSum+= sum/(dataset.size()*Math.pow(2, j+1));
-            Logger.log("%5s %n", sum/dataset.size());
+            scalingTerm+= totalCov[j]/(dataset.size()*Math.pow(2, j+1));
+            meanRule+= (j+1)*totalCov[j];
+            Logger.log("%2s. %5s %n", (j+1), totalCov[j]/dataset.size());
         }
-        Logger.log("Weighted coverage sum: %5s", totalSum);
-        Logger.log("%n");
+        meanRule/=dataset.size();
+        boolean total_monotonicity = true;
+        float granular_monotonicity = 1.0f;
+        for (int i = 1; i < list.rules().length; i++){
+            if (totalCov[i]>totalCov[i-1])
+                total_monotonicity=false;
+            else
+                granular_monotonicity+=1.0f;
+        }
+        granular_monotonicity/=list.rules().length;
+
+        Logger.log("Scaling term: %5s%n", scalingTerm);
+        Logger.log("Mean i-th rule used for classification: %2s%n",meanRule);
+        Logger.log("Total monotonicity: %b%n", total_monotonicity);
+        Logger.log("Granular monotonicity: %2s%n", granular_monotonicity);
     }
 
     @Override
@@ -52,7 +67,14 @@ public class PBCAMEnhancedAnalytics extends PittsburghContinuousAntMiner {
         super.test(dataset, model);
 
         if (((ClassificationModel) model).raw() instanceof RuleList) {
-            logRules(dataset, (RuleList) ((ClassificationModel) model).raw());
+            RuleList rl = (RuleList) ((ClassificationModel) model).raw();
+            rl.apply(dataset);
+            logRules(dataset, rl);
         }
+    }
+    public static void main(String[] args) throws Exception {
+        PBCAMEnhancedAnalytics algorithm =
+                new PBCAMEnhancedAnalytics();
+        algorithm.run(args);
     }
 }

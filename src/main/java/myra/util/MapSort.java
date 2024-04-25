@@ -26,10 +26,16 @@ public class MapSort {
         Couple pivot = arr[pivotInd];
 
         for(int i = low+1; i<high+1;i++){
-            if(arr[i].fl<pivot.fl){
+            if(arr[i].fl>pivot.fl){
+                // bump the thing under the pivot
                 arr[pivotInd]=arr[i];
-                arr[i]=pivot;
+                // move the index up
                 pivotInd++;
+                // put whatever is there on the current i
+                arr[i]=arr[pivotInd];
+                // place the pivot
+                arr[pivotInd]=pivot;
+                
             }
         }
         innerSort(arr, low, pivotInd-1);

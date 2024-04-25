@@ -10,3 +10,7 @@ version | description                                                | date
 0.2.4   | PBCAM should now output rule coverage                      | 14/03/2024
 0.2.5   | Enhanced Statistics, coverage now reported for test set    |
         | as well
+0.2.6   | Beautified Enhanced Stats                                  | 17/04/2024
+0.2.7   | New Hopefully Final Stats                                  | 19/04/2024
+0.2.8   | Fixed a small error with mapsort and reversed it           | 25/04/2024
+        | to preserve the semantics in OrderedLevelPheromonePolicy   |

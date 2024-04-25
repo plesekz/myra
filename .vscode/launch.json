@@ -4,6 +4,7 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+    
         {
             "type": "java",
             "name": "PBCAntMinerFallingRule",
@@ -92,7 +93,7 @@
             "name": "PCB AM Falling Rule",
             "request": "launch",
             "mainClass": "myra.algorithm.PBCAntMinerFallingRule",
-            "args": "-f \"C:\\Users\\zdend\\OneDrive\\Exeter\\4th year\\Individual project\\myra\\myra\\TR00_iris.arff\"",
+            "args": "-f \"C:\\Users\\zdend\\OneDrive\\Exeter\\4th year\\Individual project\\myra\\myra\\TR00_iris.arff\" -t \"C:\\Users\\zdend\\OneDrive\\Exeter\\4th year\\Individual project\\myra\\myra\\TS00_iris.arff\"",
             "projectName": "myra"
         },
         {
@@ -100,7 +101,7 @@
             "name": "PBCAM Level Swapping",
             "request": "launch",
             "mainClass": "myra.algorithm.PBCAMLevelSwapping",
-            "args": "-f \"C:\\Users\\zdend\\OneDrive\\Exeter\\4th year\\Individual project\\myra\\myra\\TR00_iris.arff\"",
+            "args": "-f \"C:\\Users\\zdend\\OneDrive\\Exeter\\4th year\\Individual project\\myra\\myra\\TR00_iris.arff\" -t \"C:\\Users\\zdend\\OneDrive\\Exeter\\4th year\\Individual project\\myra\\myra\\TS00_iris.arff\"",
             "projectName": "myra"
         },
         {
@@ -110,5 +111,19 @@
             "mainClass": "myra.rule.shell.Shell",
             "projectName": "myra"
         }
+        {
+            "name": "evaluator_run_MYRA",
+            "type": "debugpy",
+            "request": "launch",
+            "justMyCode": false,
+            "stopOnEntry": false,
+            "program": "${file}",
+            "args":[
+                "C:\\Users\\zdend\\OneDrive\\Exeter\\4th year\\Individual project\\results\\6thRun-HopeFinal-0.2.7-LevelSwapping"
+            ],
+            "env": {
+                "PYTHONPATH": "C:\\Users\\zdend\\AppData\\Local\\Programs\\Python\\Python39"
+                }
+        },
     ]
 }
