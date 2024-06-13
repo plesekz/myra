@@ -33,7 +33,7 @@ public class PBCAMEnhancedAnalytics extends PittsburghContinuousAntMiner {
         super.logRules(dataset, list);
         Logger.log(">>> Coverage over dataset per rule%n");
 
-        float scalingTerm = 0;
+       // float scalingTerm = 0;
         float meanRule = 0;
         float[] totalCov = new float[list.rules().length];
         for (int j = 0; j < list.rules().length; j++) {
@@ -41,7 +41,7 @@ public class PBCAMEnhancedAnalytics extends PittsburghContinuousAntMiner {
             for(int i = 0; i<r.covered().length;i++){
                 totalCov[j]+=r.covered()[i];
             }
-            scalingTerm+= totalCov[j]/(dataset.size()*Math.pow(2, j+1));
+        //    scalingTerm+= totalCov[j]/(dataset.size()*Math.pow(2, j+1));
             meanRule+= (j+1)*totalCov[j];
             Logger.log("%2s. %5s %n", (j+1), totalCov[j]/dataset.size());
         }
@@ -56,7 +56,7 @@ public class PBCAMEnhancedAnalytics extends PittsburghContinuousAntMiner {
         }
         granular_monotonicity/=list.rules().length;
 
-        Logger.log("Scaling term: %5s%n", scalingTerm);
+     //   Logger.log("Scaling term: %5s%n", scalingTerm);
         Logger.log("Mean i-th rule used for classification: %2s%n",meanRule);
         Logger.log("Total monotonicity: %b%n", total_monotonicity);
         Logger.log("Granular monotonicity: %2s%n", granular_monotonicity);

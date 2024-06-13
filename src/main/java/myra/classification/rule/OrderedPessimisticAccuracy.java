@@ -24,6 +24,7 @@ import myra.Cost.Maximise;
 import myra.datamining.Dataset;
 import myra.rule.ListMeasure;
 import myra.rule.RuleList;
+import myra.util.Logger;
 import myra.util.Stats;
 
 /**
@@ -49,7 +50,7 @@ public class OrderedPessimisticAccuracy implements ListMeasure {
 
         double[] coverage = new double[list.size()];
         double[] errors = new double[list.size()];
-        double scale = 0.0;
+        double granular_monotonicity = 1.0f;
 
         // coverage and errors of each rule
 
@@ -74,14 +75,25 @@ public class OrderedPessimisticAccuracy implements ListMeasure {
 
         //System.out.println("CUSTOM MEAURE RUNNING");
 
-        for(int i = 0; i < coverage.length; i++){
-            double ruleCoverageAsFraction=(coverage[i]/(double)dataset.size());
-            //ruleCoverageAsFraction=ruleCoverageAsFraction*Math.pow(2,i);
-            ruleCoverageAsFraction=ruleCoverageAsFraction/Math.pow(2,(i+1));
-            scale+= ruleCoverageAsFraction;
+        for(int i = 1; i < coverage.length; i++){
+            
+            if (coverage[i] < coverage[i-1]) {
+        	granular_monotonicity+= 1.0f;
+            }
         }
         double score = 1.0 - (predicted / (double) dataset.size());
-
-        return new Maximise(score*scale);
+        
+        granular_monotonicity/=list.rules().length;
+        
+        granular_monotonicity = 1 - granular_monotonicity;
+        
+       //Logger.log("%5s, %5s, %5s  %n",score,granular_monotonicity,(score+granular_monotonicity)/2);
+       
+       score = (score+granular_monotonicity)/2; 
+        
+       // return new Maximise(score*scale);
+       //return new Maximise(score + scale);
+       return new Maximise(score);
+       // return new Maximise(score);
     }
 }
